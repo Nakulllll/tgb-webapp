@@ -21,3 +21,14 @@ body {
   color: black;
   background: white;
 }
+
+.gradient_text {
+  background: linear-gradient(0deg, #7C7C7C , #FFB800 40%);
+  -webkit-background-clip: text; /* For Safari */
+  -webkit-text-fill-color: transparent; /* For Safari */
+  color: #FFB800; /* Fallback for other browsers */
+}
+
+.gradient_two {
+  background: linear-gradient(45deg, #000000 0%, #383838 100%);
+}

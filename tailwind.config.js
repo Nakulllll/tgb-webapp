@@ -20,6 +20,7 @@ module.exports = {
         button_hover: '#F2994A',
         yellow_text: '#E1AB20',
         grey_bg: '#F0F0F0',
+        dark_blue_text:'#4E4B66',
         gradient1: 'linear-gradient(0deg, #FFB800 80%, #7C7C7C 20%)',
         gradient2: 'linear-gradient(45deg, #000000 0%, #383838 100%)',
       },

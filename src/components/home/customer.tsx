@@ -1,7 +1,7 @@
 const Customer = () => {
     return (
         <>
-            <div className="flex flex-col items-center mx-10 md:mx-32">
+            <div className="flex flex-col items-center mx-10 md:mx-32 overflow-auto">
                 <h1 className="text-primary-heading font-bold">What Our Customers Say</h1>
                 <p className="text-normal-text text-center font-light my-4">Our customers rave about the convenience and effectiveness of our platform. They love the ability to connect with verified experts from different industries for instant advice and guidance. From bite-sized consultations to personalized mentorship, they've found success and growth through our community. Join the many satisfied customers who are raving about the positive impact we've made on their lives and careers!</p>
 
