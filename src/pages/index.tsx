@@ -35,7 +35,7 @@ export default function Home() {
           </div>
 
           <WeIdea/>
-          <Image src={LightRings} alt="" className="absolute -right-32 top-[170rem] -z-10"/>
+          {/*<Image src={LightRings} alt="" className="absolute -right-32 top-[170rem] -z-10"/>*/}
           <Join/>
           <Mentor/>
           <Image src={RightRings} alt="" className="absolute -left-32 top-[220rem] -z-10"/>
