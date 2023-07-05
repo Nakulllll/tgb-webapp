@@ -15,13 +15,13 @@ import RightRings from "./../../public/images/rings-left-dark.png";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center relative">
+    <main className="flex flex-col items-center relative overflow-hidden">
       <Layout>
           <Hero/>
           {/*
 
 
-          <Faq/>
+
           <Customer/>
 
           */}
@@ -35,9 +35,10 @@ export default function Home() {
           </div>
 
           <WeIdea/>
-          {/*<Image src={LightRings} alt="" className="absolute -right-32 top-[170rem] -z-10"/>*/}
+          <Image src={LightRings} alt="" className="absolute -right-32 top-[170rem] -z-10"/>
           <Join/>
           <Mentor/>
+          <Faq/>
           <Image src={RightRings} alt="" className="absolute -left-32 top-[220rem] -z-10"/>
           <Media/>
           <Contact/>

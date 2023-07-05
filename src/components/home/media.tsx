@@ -9,7 +9,7 @@ const Media = () => {
         <>
             <div className="mx-10 md:mx-32 flex flex-col items-center text-center">
                 <h1 className="text-primary-heading font-bold">Check out what media says about us</h1>
-                <div className="grid grid-cols-2 gap-20 py-20 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-20 py-20 items-center">
                     <div>
                         <Image src={Media1} alt="entrepreneur-stories" />
                     </div>
