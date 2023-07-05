@@ -30,7 +30,7 @@ const Navbar = () => {
                 >
                     <button
                         onClick={() => setShowMobileMenu(false)}
-                        className="absolute right-5 top-5 text-xl bg-transparent border-none outline-none"
+                        className="absolute right-5 text-3xl top-5 bg-transparent border-none outline-none"
                     >
                         &#10005;
                     </button>
@@ -65,14 +65,14 @@ const Navbar = () => {
     );
 
     return (
-        <div className="w-full px-20 py-2 flex flex-row items-center text-xl justify-between z-50">
-            <div className="flex flex-row space-x-5">
+        <div className="w-full px-4 py-2 flex flex-row items-center text-xl justify-between z-50">
+            <div className="flex flex-row space-x-10">
                 <a href="/">
                     <Image src={Logo} alt="" className="w-52 py-5" />
                 </a>
             </div>
             {isMobile ? (
-                <button onClick={() => setShowMobileMenu(!showMobileMenu)}>☰</button>
+                <button className="text-3xl" onClick={() => setShowMobileMenu(!showMobileMenu)}>☰</button>
             ) : (
                 <div className="flex flex-row items-center justify-center space-x-10 text-lg md:text-big-text">
 

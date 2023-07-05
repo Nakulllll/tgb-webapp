@@ -23,7 +23,7 @@ const Contact = () => {
 
     return (
         <div className="flex flex-col items-center mx-10 md:mx-32">
-            <h1 className="py-5 text-primary-heading font-bold">Contact Us</h1>
+            <h1 className="py-5 text-secondary-heading md:text-primary-heading font-bold">Contact Us</h1>
             <div className="flex flex-col md:flex-row lg:flex-row items-center justify-between">
                 <div className="w-full lg:w-1/2 p-4">
                     <input

@@ -8,8 +8,8 @@ const Media = () => {
     return (
         <>
             <div className="mx-10 md:mx-32 flex flex-col items-center text-center">
-                <h1 className="text-primary-heading font-bold">Check out what media says about us</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-20 py-20 items-center">
+                <h1 className="text-secondary-heading md:text-primary-heading font-bold">Check out what media says about us</h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-20 py-20 items-center justify-center text-center">
                     <div>
                         <Image src={Media1} alt="entrepreneur-stories" />
                     </div>
@@ -20,7 +20,7 @@ const Media = () => {
                         <Image src={Media3} alt="india-hunt" />
                     </div>
                     <div>
-                        <Image src={Media4} alt="bharat-saga" />
+                        <Image src={Media4} alt="bharat-saga" className="w-full px-16"/>
                     </div>
                 </div>
 
