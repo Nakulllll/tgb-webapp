@@ -3,7 +3,7 @@ import { Collapse, Text, Grid } from "@nextui-org/react";
 const Faq = () => {
     return (
         <>
-        <div className="mx-10 md:mx-80 flex flex-col items-center my-10 text-center">
+        <div className="mx-3 md:mx-80 flex flex-col items-center my-10 text-center">
             <h1 className="text-secondary-heading md:text-primary-heading font-bold">Frequently Asked Questions</h1>
 
             <Grid.Container gap={2}>
