@@ -22,13 +22,11 @@ export default function Home() {
 
 
 
-          <Customer/>
+
 
           */}
 
-
           <Stats/>
-
           <Image src={LightRings} alt="" className="absolute -left-32 top-[65rem] -z-10 rotate-180"/>
           <div className="mx-10 md:mx-32 text-white text-center px-5 md:px-32 gradient_two font-bold text-big-text py-14">
               <p>Unlock your entrepreneurial potential with instant mentorship. Connect with experienced professionals and skyrocket your startup success. Discover a world of growth opportunities now.</p>
@@ -39,6 +37,7 @@ export default function Home() {
           <Join/>
           <Mentor/>
           <Faq/>
+          <Customer/>
           <Image src={RightRings} alt="" className="absolute -left-32 top-[220rem] -z-10"/>
           <Media/>
           <Contact/>
