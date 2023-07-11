@@ -14,13 +14,13 @@ const Footer = () => {
                 <a>Terms of use</a>
             </div>
             <div className="flex flex-row items-center pt-4 justify-center">
-                <a className="cursor-pointer" href="">
+                <a className="cursor-pointer" target="_blank" href="https://instagram.com/theguidingbee?igshid=NGExMmI2YTkyZg==">
                     <Image src={Facebook} alt="facebook_icon"/>
                 </a>
-                <a className="cursor-pointer" href="">
+                <a className="cursor-pointer" target="_blank" href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://twitter.com/theguidingbee&ved=2ahUKEwjG7sGP6oWAAxWIumMGHX1vBJAQjjh6BAgNEAE&usg=AOvVaw03a772wUE2qVAZY2eWqQAf">
                     <Image src={Twitter} alt="twitter_icon" className="mx-6"/>
                 </a>
-                <a className="cursor-pointer" href="">
+                <a className="cursor-pointer" target="_blank" href="https://www.linkedin.com/company/guidingbee/">
                     <Image src={Linkedin} alt="facebook_icon"/>
                 </a>
 

@@ -18,14 +18,6 @@ export default function Home() {
     <main className="flex flex-col items-center relative overflow-hidden">
       <Layout>
           <Hero/>
-          {/*
-
-
-
-
-
-          */}
-
           <Stats/>
           <Image src={LightRings} alt="" className="absolute -left-32 top-[65rem] -z-10 rotate-180"/>
           <div className="mx-10 md:mx-32 text-white text-center px-5 md:px-32 gradient_two font-bold text-big-text py-14">
