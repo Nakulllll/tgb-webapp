@@ -1,6 +1,6 @@
-import Facebook from "./../../public/logo/facebook.png";
-import Twitter from "./../../public/logo/twitter.png";
-import Linkedin from "./../../public/logo/linkedin.png";
+import Facebook from "../../../../public/logo/facebook.png";
+import Twitter from "../../../../public/logo/twitter.png";
+import Linkedin from "../../../../public/logo/linkedin.png";
 import Image from "next/image";
 
 const Footer = () => {

@@ -17,18 +17,50 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
-  color: black;
-  background: white;
+  color: white;
+  background: #F1F4F9;
+  font-family: 'Poppins', 'serif';
 }
 
-.gradient_text {
-  background: linear-gradient(0deg, #7C7C7C , #FFB800 40%);
-  -webkit-background-clip: text; /* For Safari */
-  -webkit-text-fill-color: transparent; /* For Safari */
-  color: #FFB800; /* Fallback for other browsers */
+.gradient-text {
+  background: linear-gradient(135deg, #F2C94C, #F4B740);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
 }
 
-.gradient_two {
-  background: linear-gradient(45deg, #000000 0%, #383838 100%);
+body {
+  color: white;
+}
+
+/* styles.css */
+.search-input {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6c6c6c;
+}
+
+::-webkit-scrollbar {
+  width: 0.3rem;
+  background: #ffffff;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+  border-radius: 0.6rem;
+  z-index: -99;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #8c8c8c;
+  border-radius: 1rem;
 }

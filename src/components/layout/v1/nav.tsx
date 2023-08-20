@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 import Image from "next/image";
-import Logo from "./../../public/logo/icon.svg";
+import Logo from "../../../../public/logo/icon.svg";
 import Button from "@/components/ui/button";
 
 const Navbar = () => {
@@ -35,25 +35,25 @@ const Navbar = () => {
                         &#10005;
                     </button>
                     <div className="flex flex-col items-center justify-center h-full space-y-4 pt-20">
-                        <a href="/" >
+                        <a href="/public" >
                             Home
                         </a>
-                        <a href="/">
+                        <a href="/public">
                             Contact Us
                         </a>
                         <a
-                            href="/"
+                            href="/public"
 
                         >
                             About Us
                         </a>
                         <a
-                            href="/"
+                            href="/public"
                         >
                             FAQ
                         </a>
                         <a
-                            href="/"
+                            href="/public"
                             className="bg-white px-6 py-2 rounded-2xl"
                         >
                             Download app
@@ -67,7 +67,7 @@ const Navbar = () => {
     return (
         <div className="w-full px-4 py-2 flex flex-row items-center text-xl justify-between z-50">
             <div className="flex flex-row space-x-10">
-                <a href="/">
+                <a href="/public">
                     <Image src={Logo} alt="" className="w-52 py-5" />
                 </a>
             </div>
@@ -76,13 +76,13 @@ const Navbar = () => {
             ) : (
                 <div className="flex flex-row items-center justify-center space-x-10 text-lg md:text-big-text">
 
-                    <a href="/" className="hover:text-yellow_text transition-all">Home</a>
-                    <a href="/" className="hover:text-yellow_text transition-all">Contact Us</a>
+                    <a href="/public" className="hover:text-yellow_text transition-all">Home</a>
+                    <a href="/public" className="hover:text-yellow_text transition-all">Contact Us</a>
                     <a href="/visa" className="hover:text-yellow_text transition-all">About Us</a>
                     <a href="/contact" className="hover:text-yellow_text transition-all">FAQ</a>
 
                     <div className="">
-                        <Button child={"Register Now"}/>
+                        <a href="/signin" className="w-44 px-4 py-3 my-2 bg-primary rounded-3xl hover:bg-button_hover transition-all">Register Now</a>
                     </div>
 
                 </div>

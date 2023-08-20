@@ -15,7 +15,7 @@ import RightRings from "./../../public/images/rings-left-dark.png";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center relative overflow-hidden">
+    <main className="flex flex-col text-black items-center relative overflow-hidden">
       <Layout>
           <Hero/>
           <Stats/>
