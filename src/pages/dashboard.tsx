@@ -24,7 +24,7 @@ const Dashboard = () => {
         const getMentorList = async () => {
             try {
                 const user = JSON.parse(localStorage.getItem('user') || '{}');
-                setName(user.displayName);
+                setName(user["First Name"]+" "+user["Last Name"]);
 
                 const uid = user.uid;
 

@@ -45,7 +45,7 @@ const Navbar = () => {
                                 Home
                             </a>
                             <a href="/humans-of-guidingbee" className="text-white hover:text-yellow_text">
-                                Human of Guiding Bee
+                                Humans of Guiding Bee
                             </a>
                             <a href="/mentors" className="text-white hover:text-yellow_text">
                                 Mentors
@@ -75,7 +75,7 @@ const Navbar = () => {
                     <div className="flex flex-row items-center gap-x-12 w-full">
                         <a href="/dashboard" className="hover:text-yellow_text transition-all">Home</a>
                         <a href="/humans-of-guidingbee" className="text-white hover:text-yellow_text">
-                            Humans of Guiding Bee
+                            Humans of Bee
                         </a>
                         <a href="/mentors" className="hover:text-yellow_text transition-all">Mentors</a>
                         <a href="/ai" className="hover:text-yellow_text text-white">Ask AI</a>

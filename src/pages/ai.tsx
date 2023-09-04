@@ -48,7 +48,7 @@ const ai = () => {
         if (socket) {
             socket.on('message', (response) => {
                 console.log('Received response from server:', response);
-                const startIndex = response.indexOf("bot:") + 4;
+                const startIndex = response.indexOf("bot:") + 3;
                 const extractedText = response.substring(startIndex).trim();
                 setBotResponses(prevResponses => [...prevResponses, extractedText]);
             });

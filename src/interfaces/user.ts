@@ -7,9 +7,10 @@ export interface UserData {
     title: string;
     company: string;
     organization: string;
+    stage: string;
     experience: string;
     specialization: string;
-    photo: File | null;
+    photo: string;
     additionalInfo: string;
-    picturePreview: string | null;
+    categories: string[];
 }

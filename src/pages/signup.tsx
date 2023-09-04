@@ -1,16 +1,19 @@
-import {useState } from "react";
+import {useEffect, useState} from "react";
 import Image from "next/image";
 import Logo from "./../../public/logo/logo.svg";
 import Gradient from "../../public/gradient-box.svg";
 import {UserData} from "@/interfaces/user";
 import {fieldOptionsWithImages} from "./../data/buttonImages";
 import firebase from "firebase";
-
+import storage = firebase.storage;
+import {useRouter} from "next/router";
 
 
 const Signup = () => {
     const [stage, setStage] = useState<number>(1);
     const [userData, setUserData] = useState<UserData>({
+        categories: [],
+        specialization: "",
         firstName: "",
         lastName: "",
         email: "",
@@ -20,11 +23,12 @@ const Signup = () => {
         company: "",
         organization: "",
         experience: "",
-        specialization: "",
-        photo: null,
-        additionalInfo: "",
-        picturePreview: null,
+        stage: "",
+        photo: "",
+        additionalInfo: ""
     });
+
+    const router = useRouter();
 
 
     const [selectedFile, setSelectedFile] = useState(null);
@@ -32,9 +36,50 @@ const Signup = () => {
     const storage = firebase.storage()
 
 
-    const handleNext = () => {
+
+    const handleNext = async () => {
         if (stage === 3) {
-            // Perform validation or data submission to backend
+            userData.categories = selectedFields;
+
+            // @ts-ignore
+            const userId = firebase.auth().currentUser.uid;
+
+            const fieldMappings = {
+                "First Name": userData.firstName,
+                "Last Name": userData.lastName,
+                "Email": userData.email,
+                "Phone Number": userData.phone,
+                "LinkedIn URL": userData.linkedin,
+                "Title": userData.title,
+                "Company": userData.company,
+                "Organization": userData.organization,
+                "Experience (in yrs)": userData.experience,
+                "Stage (eg. early, revenue etc)": userData.stage,
+                "Specialization": userData.specialization,
+                "Additional information": userData.additionalInfo,
+                "Image": userData.photo,
+                "Categories": userData.categories.join(", "),
+                "Date of Birth": "25/07/1992",
+                "Position in Business": userData.title,
+                "Registered On": "2023-05-19 20:51:59.410923",
+                "uid": userId,
+                "Scheduled Calls": [],
+                "isVerified": false,
+            };
+
+
+            try {
+                // @ts-ignore
+                console.log(fieldMappings);
+                const userDocRef = firebase.firestore().collection("users").doc(userId);
+                await userDocRef.set(fieldMappings);
+
+                localStorage.setItem('user', JSON.stringify(fieldMappings));
+                // Redirect to the dashboard after the data is successfully written
+                router.push("/dashboard");
+            } catch (error) {
+                console.error("Error writing data to Firestore:", error);
+            }
         }
         setStage(stage + 1);
     };
@@ -50,7 +95,7 @@ const Signup = () => {
             return;
         }
 
-        const storageRef = storage;
+        const storageRef = storage.ref();
 
         // @ts-ignore
         const fileRef = storageRef.child(`users/profile/${firebase.auth().currentUser.uid}/dp/${selectedFile.name}`);
@@ -60,11 +105,13 @@ const Signup = () => {
             alert('File uploaded successfully.');
             // You can now retrieve the download URL if needed
             const downloadURL = await fileRef.getDownloadURL();
+            userData.photo = downloadURL;
             console.log('Download URL:', downloadURL);
         } catch (error) {
             console.error('Error uploading file:', error);
         }
     };
+
 
 
     const [selectedFields, setSelectedFields] = useState<string[]>([]);
@@ -98,6 +145,7 @@ const Signup = () => {
                                 className="border border-[#D5DAE1] rounded-2xl px-4 py-2 w-full mb-3"
                                 type="text"
                                 placeholder="First Name"
+                                required
                                 value={userData.firstName}
                                 onChange={(e) => setUserData({ ...userData, firstName: e.target.value })}
                             />
@@ -106,6 +154,7 @@ const Signup = () => {
                             <input
                                 className="border border-[#D5DAE1] rounded-2xl px-4 py-2 w-full mb-3"
                                 type="text"
+                                required
                                 placeholder="Last Name"
                                 value={userData.lastName}
                                 onChange={(e) => setUserData({ ...userData, lastName: e.target.value })}
@@ -114,7 +163,8 @@ const Signup = () => {
                             <h4 className="text-[#333333] font-bold ml-2 pb-2">Phone Number</h4>
                             <input
                                 className="border border-[#D5DAE1] rounded-2xl px-4 py-2 w-full mb-3"
-                                type="text"
+                                type="number"
+                                required
                                 placeholder="Phone Number"
                                 value={userData.phone}
                                 onChange={(e) => setUserData({ ...userData, phone: e.target.value })}
@@ -124,6 +174,7 @@ const Signup = () => {
                             <input
                                 className="border border-[#D5DAE1] rounded-2xl px-4 py-2 w-full mb-3"
                                 type="email"
+                                required
                                 placeholder="Email"
                                 value={userData.email}
                                 onChange={(e) => setUserData({ ...userData, email: e.target.value })}
@@ -133,6 +184,7 @@ const Signup = () => {
                             <input
                                 className="border border-[#D5DAE1] rounded-2xl px-4 py-2 w-full mb-3"
                                 type="url"
+                                required
                                 placeholder="LinkedIn URL"
                                 value={userData.linkedin}
                                 onChange={(e) => setUserData({ ...userData, linkedin: e.target.value })}
@@ -148,10 +200,10 @@ const Signup = () => {
                             <div className="flex flex-col items-start w-full pb-10">
                                 <div className="flex flex-row items-center justify-between gap-3">
                                     <div className="prof-pic-up mar-r">
-                                        {userData.picturePreview ? (
-                                            <img className="w-32 h-32 rounded-full" src={userData.picturePreview} alt="Profile Preview" />
+                                        {userData.photo ? (
+                                            <img className="w-auto h-32 rounded-full" src={userData.photo} alt="Profile Preview" />
                                         ) : (
-                                            <img className="w-32 h-32 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWH8bZEkYpeo_CfQx4qOTiJwLqEHI5rE8dVBHqPpM&s" alt="Default Profile" />
+                                            <img className="w-auto h-32 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWH8bZEkYpeo_CfQx4qOTiJwLqEHI5rE8dVBHqPpM&s" alt="Default Profile" />
                                         )}
                                     </div>
                                     <input type="file" onChange={handleFileChange} />
@@ -174,8 +226,8 @@ const Signup = () => {
                                 className="border border-[#D5DAE1] rounded-2xl px-4 py-2 w-full mb-3"
                                 type="url"
                                 placeholder="Current Company"
-                                value={userData.linkedin}
-                                onChange={(e) => setUserData({ ...userData, linkedin: e.target.value })}
+                                value={userData.company}
+                                onChange={(e) => setUserData({ ...userData, company: e.target.value })}
                             />
 
                             <h4 className="text-[#333333] font-bold ml-2 pb-2">Experience (in yrs)</h4>
@@ -183,8 +235,8 @@ const Signup = () => {
                                 className="border border-[#D5DAE1] rounded-2xl px-4 py-2 w-full mb-3"
                                 type="url"
                                 placeholder="Experience"
-                                value={userData.linkedin}
-                                onChange={(e) => setUserData({ ...userData, linkedin: e.target.value })}
+                                value={userData.experience}
+                                onChange={(e) => setUserData({ ...userData, experience: e.target.value })}
                             />
 
                             <h4 className="text-[#333333] font-bold ml-2 pb-2">Stage (eg. early, revenue etc)</h4>
@@ -192,8 +244,8 @@ const Signup = () => {
                                 className="border border-[#D5DAE1] rounded-2xl px-4 py-2 w-full mb-3"
                                 type="url"
                                 placeholder="Stage"
-                                value={userData.linkedin}
-                                onChange={(e) => setUserData({ ...userData, linkedin: e.target.value })}
+                                value={userData.stage}
+                                onChange={(e) => setUserData({ ...userData, stage: e.target.value })}
                             />
 
                             <h4 className="text-[#333333] font-bold ml-2 pb-2">Specialization</h4>
@@ -201,8 +253,8 @@ const Signup = () => {
                                 className="border border-[#D5DAE1] rounded-2xl px-4 py-2 w-full mb-3"
                                 type="url"
                                 placeholder="Specialization"
-                                value={userData.linkedin}
-                                onChange={(e) => setUserData({ ...userData, linkedin: e.target.value })}
+                                value={userData.specialization}
+                                onChange={(e) => setUserData({ ...userData, specialization: e.target.value })}
                             />
 
                             <h4 className="text-[#333333] font-bold ml-2 pb-2">Additional information</h4>
@@ -231,13 +283,16 @@ const Signup = () => {
                                         }`}
                                         onClick={() => handleFieldClick(field.name)}
                                     >
-                                        {isFieldSelected(field.name)}
+                                        {
+                                            isFieldSelected(field.name)
+                                        }
                                         <div className="flex items-center">
                                             <Image
                                                 src={field.image}
                                                 alt={field.name}
                                                 className="mr-2"
                                             />
+
                                             {field.name}
                                         </div>
                                     </button>

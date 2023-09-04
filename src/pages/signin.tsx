@@ -43,7 +43,8 @@ const Signin = () => {
                     console.log(user);
                     // @ts-ignore
                     if (user.displayName === null) {
-                        router.push('/signup')
+                        // @ts-ignore
+                        router.push(`/signup?uid=${user.uid}`)
                     } else {
                         router.push('/dashboard')
                     }
