@@ -1,7 +1,7 @@
 const Join = () => {
     return (
         <>
-            <div className="mx-10 md:mx-32 text-white text-center px-10 md:px-32 gradient_two font-bold text-big-text py-14">
+            <div className="mx-10 md:mx-32 text-black text-center px-10 md:px-32 gradient_two font-bold text-big-text py-14">
                 <div className="flex flex-col md:flex-row justify-between">
                     <div className="w-full lg:w-1/2 flex flex-col items-start text-left">
                         <h1 className="text-secondary-heading md:text-primary-heading py-4">Ready to join?</h1>

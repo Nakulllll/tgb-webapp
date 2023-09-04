@@ -37,12 +37,15 @@ const Navbar = () => {
                     </button>
 
                     <div className="flex flex-col items-center justify-center text-2xl font-bold h-full pt-20">
-                        <a href="/">
+                        <a href="/dashboard">
                             <Image src={Logo} alt="" className="w-42 py-5" />
                         </a>
                         <div className="flex flex-col items-center justify-center text-2xl space-y-20 font-bold h-full pt-20">
                             <a href="/dashboard" className="text-white hover:text-yellow_text">
                                 Home
+                            </a>
+                            <a href="/humans-of-guidingbee" className="text-white hover:text-yellow_text">
+                                Human of Guiding Bee
                             </a>
                             <a href="/mentors" className="text-white hover:text-yellow_text">
                                 Mentors
@@ -60,7 +63,7 @@ const Navbar = () => {
         <div className="w-[100vw] px-16 flex flex-row items-center text-xl bg-[#0A204A] gap-x-20 justify-between z-50">
 
             <div className="flex flex-row space-x-10">
-                <a href="/login">
+                <a href="/dashboard">
                     <Image src={Logo} alt="" className="w-36 h-auto py-5" />
                 </a>
             </div>
@@ -69,8 +72,11 @@ const Navbar = () => {
             ) : (
                 <div className="flex flex-row text-white items-center justify-end w-full gap-x-6 text-lg md:text-big-text">
 
-                    <div className="flex flex-row items-center gap-x-6 w-full">
+                    <div className="flex flex-row items-center gap-x-12 w-full">
                         <a href="/dashboard" className="hover:text-yellow_text transition-all">Home</a>
+                        <a href="/humans-of-guidingbee" className="text-white hover:text-yellow_text">
+                            Humans of Guiding Bee
+                        </a>
                         <a href="/mentors" className="hover:text-yellow_text transition-all">Mentors</a>
                         <a href="/ai" className="hover:text-yellow_text text-white">Ask AI</a>
                     </div>

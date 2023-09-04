@@ -1,9 +1,12 @@
-import {useState, ChangeEvent, useRef} from "react";
+import {useState } from "react";
 import Image from "next/image";
 import Logo from "./../../public/logo/logo.svg";
-import Gradient from "./../../public/gradient-box.svg";
+import Gradient from "../../public/gradient-box.svg";
 import {UserData} from "@/interfaces/user";
 import {fieldOptionsWithImages} from "./../data/buttonImages";
+import firebase from "firebase";
+
+
 
 const Signup = () => {
     const [stage, setStage] = useState<number>(1);
@@ -23,7 +26,11 @@ const Signup = () => {
         picturePreview: null,
     });
 
-    const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+    const [selectedFile, setSelectedFile] = useState(null);
+
+    const storage = firebase.storage()
+
 
     const handleNext = () => {
         if (stage === 3) {
@@ -32,22 +39,33 @@ const Signup = () => {
         setStage(stage + 1);
     };
 
-    const handleOpenFileInput = () => {
-        if (fileInputRef.current) {
-            fileInputRef.current.click();
+    const handleFileChange = (e : any) => {
+        setSelectedFile(e.target.files[0]);
+    };
+
+
+    const handleUpload = async () => {
+        if (!selectedFile) {
+            alert('Please select a file.');
+            return;
+        }
+
+        const storageRef = storage;
+
+        // @ts-ignore
+        const fileRef = storageRef.child(`users/profile/${firebase.auth().currentUser.uid}/dp/${selectedFile.name}`);
+
+        try {
+            await fileRef.put(selectedFile);
+            alert('File uploaded successfully.');
+            // You can now retrieve the download URL if needed
+            const downloadURL = await fileRef.getDownloadURL();
+            console.log('Download URL:', downloadURL);
+        } catch (error) {
+            console.error('Error uploading file:', error);
         }
     };
 
-    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files) {
-            const selectedPicture = event.target.files[0];
-            setUserData({
-                ...userData,
-                photo: selectedPicture,
-                picturePreview: URL.createObjectURL(selectedPicture),
-            });
-        }
-    };
 
     const [selectedFields, setSelectedFields] = useState<string[]>([]);
 
@@ -136,12 +154,8 @@ const Signup = () => {
                                             <img className="w-32 h-32 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWH8bZEkYpeo_CfQx4qOTiJwLqEHI5rE8dVBHqPpM&s" alt="Default Profile" />
                                         )}
                                     </div>
-                                    <input
-                                        type="file"
-                                        accept="image/png"
-                                        onChange={handleFileChange}
-                                        id="picture"
-                                    />
+                                    <input type="file" onChange={handleFileChange} />
+                                    <button onClick={handleUpload}>Upload</button>
                                 </div>
                             </div>
 
@@ -241,7 +255,7 @@ const Signup = () => {
             </div>
             <Image src={Gradient} className="overflow-hidden hidden md:flex w-[50vw] h-[100vh] object-cover"  alt="signup-img"/>
         </div>
-    );
+    )
 };
 
 export default Signup;

@@ -82,17 +82,17 @@ const Signin = () => {
                                 className="bg-[#0A204A] text-white w-64 rounded-2xl px-5 py-3"
                                 onClick={handleSendOTP}
                             >
-                               Send OTP
+                                Send OTP
                             </button>
                         </div>
-                            <div className="flex flex-col items-start mt-4 w-full">
-                                <p className="text-[#6C6C6C]">
-                                    Didn't receive OTP?{" "}
-                                    <a href="#" onClick={handleVerifyCode}>
-                                        Resend OTP
-                                    </a>
-                                </p>
-                            </div>
+                        <div className="flex flex-col items-start mt-4 w-full">
+                            <p className="text-[#6C6C6C]">
+                                Didn't receive OTP?{" "}
+                                <a href="#" onClick={handleVerifyCode}>
+                                    Resend OTP
+                                </a>
+                            </p>
+                        </div>
 
 
                         <div className="flex flex-col items-start mt-4 w-full">

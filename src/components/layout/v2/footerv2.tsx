@@ -6,7 +6,7 @@ import BlueBee from "../../../../public/hero-blue-bee.svg";
 
 const BottomNavBar = () => {
     return (
-        <div className="bg-[#0A204A] w-full flex flex-col justify-center items-center h-[20rem] -z-20 rounded-t-[50px] md:rounded-t-[300px] text-center text-white py-10 relative">
+        <div className="bg-[#0A204A] w-full flex flex-col justify-center items-center h-[25rem] -z-20 rounded-t-[40px] md:rounded-t-[100px] text-center text-white py-10 relative sticky">
             <p className="text-2xl md:text-4xl font-bold py-2 text-[#FDB813]">The Guiding Bee</p>
             <p className="text-lg md:text-xl font-bold">An unit of Edbee Technologies Pvt. Ltd.</p>
             <a className="bg-white text-black px-4 py-2 cursor-pointer rounded-2xl my-4">Contact Us</a>

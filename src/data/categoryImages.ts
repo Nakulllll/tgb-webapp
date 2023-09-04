@@ -20,7 +20,7 @@ import VirtualCFO from "./../../public/categories/Virtual CFO.svg";
 const allCategories = [
     {
         id: "business",
-        label: "Business",
+        label: "Business Model",
         imageSrc: Business,
         alt: "Business",
     },
@@ -44,9 +44,9 @@ const allCategories = [
     },
     {
         id: "finance",
-        label: "Finance Strategy",
+        label: "Financial Model",
         imageSrc: Finance,
-        alt: "Finance Strategy",
+        alt: "Financial Model",
     },
     {
         id: "fintech",

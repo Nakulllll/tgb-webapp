@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
       //<AuthContextProvider>
-        <Component {...pageProps} />
+      <Component {...pageProps} />
       //</AuthContextProvider>
   )
 }
