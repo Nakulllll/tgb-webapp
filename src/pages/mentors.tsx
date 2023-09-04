@@ -38,7 +38,7 @@ const Mentors = () => {
                             <p>Filters</p>
                         </button>
                     </div>
-                    <div className="text-[#0A204A] py-10 flex flex-row justify-between">
+                    {/*<div className="text-[#0A204A] py-10 flex flex-row justify-between">
                         <div className="flex flex-col items-center text-lg font-bold">
                             <Image src={Marketing} alt="Marketing"/>
                             <p>Marketing</p>
@@ -71,9 +71,9 @@ const Mentors = () => {
                             <Image src={TeamManager} alt="TeamManager"/>
                             <p>TeamManager</p>
                         </div>
-                    </div>
+                    </div>*/}
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-x-4 w-full">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-start gap-x-4 w-full pt-10">
                         {topMentors.map((mentor: any) => (
                             <div
                                 key={mentor.id}

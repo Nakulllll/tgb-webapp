@@ -3,6 +3,7 @@ import Image from "next/image";
 import Logo from "./../../public/logo/logo.svg";
 import Gradient from "./../../public/gradient-box.svg";
 import {UserData} from "@/interfaces/user";
+import {fieldOptionsWithImages} from "./../data/buttonImages";
 
 const Signup = () => {
     const [stage, setStage] = useState<number>(1);
@@ -25,7 +26,7 @@ const Signup = () => {
     const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     const handleNext = () => {
-        if (stage === 2) {
+        if (stage === 3) {
             // Perform validation or data submission to backend
         }
         setStage(stage + 1);
@@ -48,11 +49,25 @@ const Signup = () => {
         }
     };
 
-    return (
-        <div className="flex flex-row">
-            <div className="w-[100vw] md:w-[50vw] h-full flex flex-col py-20 text-center justify-center items-center overflow-y-auto">
+    const [selectedFields, setSelectedFields] = useState<string[]>([]);
 
-                <div className="px-10 lg:px-20 w-full">
+    const handleFieldClick = (field: string) => {
+        if (selectedFields.includes(field)) {
+            setSelectedFields(selectedFields.filter((item) => item !== field));
+        } else {
+            setSelectedFields([...selectedFields, field]);
+        }
+    };
+
+    const isFieldSelected = (field: string) => {
+        return selectedFields.includes(field);
+    };
+
+    return (
+        <div className="flex flex-row text-black">
+            <div className="w-[100vw] md:w-[50vw] h-[100vh] overflow-x-hidden flex flex-col py-20 text-center justify-center items-center overflow-y-auto">
+
+                <div className="px-10 lg:px-20 h-[100vh] md:w-[50vw]">
                     {stage === 1 && (
                         <div className="flex flex-col items-start w-full">
                             <div className="flex flex-col items-center w-full justify-center pb-3">
@@ -177,28 +192,54 @@ const Signup = () => {
                             />
 
                             <h4 className="text-[#333333] font-bold ml-2 pb-2">Additional information</h4>
-                            <input
-                                className="border border-[#D5DAE1] rounded-2xl px-4 py-2 w-full mb-3"
-                                type="text"
+                            <textarea
+                                className="border border-[#D5DAE1] rounded-2xl h-40 px-4 py-2 w-full mb-3"
                                 placeholder="Additional Info"
-                                value={userData.linkedin}
-                                onChange={(e) => setUserData({ ...userData, linkedin: e.target.value })}
+                                value={userData.additionalInfo}
+                                onChange={(e) => setUserData({ ...userData, additionalInfo: e.target.value })}
                             />
 
+                        </div>
+                    )}
+                    {stage === 3 && (
+                        <div className="flex flex-col items-start w-full mb-5">
+                            <div className="flex flex-row items-center gap-4 w-full">
+                                <h4 className="text-[#333333] font-bold text-2xl my-8">
+                                    Please choose your fields of concern.
+                                </h4>
+                            </div>
+                            <div className="flex flex-wrap gap-4 justify-center items-center">
+                                {fieldOptionsWithImages.map((field, index) => (
+                                    <button
+                                        key={index}
+                                        className={`flex items-center px-4 py-2 rounded-lg text-sm transition-all ${
+                                            isFieldSelected(field.name) ? "bg-[#FDB813]" : "bg-white"
+                                        }`}
+                                        onClick={() => handleFieldClick(field.name)}
+                                    >
+                                        {isFieldSelected(field.name)}
+                                        <div className="flex items-center">
+                                            <Image
+                                                src={field.image}
+                                                alt={field.name}
+                                                className="mr-2"
+                                            />
+                                            {field.name}
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     )}
                     <button
                         className="bg-[#0A204A] text-white w-full rounded-2xl px-5 py-3 my-5"
                         onClick={handleNext}
                     >
-                        {stage === 1 ? "Next" : "Finish"}
+                        {stage !== 3 ? "Next" : "Finish"}
                     </button>
-                    <p className="text-[#6C6C6C]">
-                        Have an account? <a href="/signin">Login</a>
-                    </p>
                 </div>
             </div>
-            <Image src={Gradient} className="hidden md:flex w-[50vw] h-[100vh] object-cover"  alt="signup-img"/>
+            <Image src={Gradient} className="overflow-hidden hidden md:flex w-[50vw] h-[100vh] object-cover"  alt="signup-img"/>
         </div>
     );
 };
