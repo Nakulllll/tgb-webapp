@@ -71,7 +71,7 @@ const ai = () => {
 
 
     useEffect(() => {
-        const socketInstance = socketIOClient('http://localhost:8000');
+        const socketInstance = socketIOClient('http://localhost:8000/api');
         setSocket(socketInstance);
 
         // Clean up the WebSocket connection when the component unmounts
