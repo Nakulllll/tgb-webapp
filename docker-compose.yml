@@ -1,8 +1,10 @@
-version: '3'
+version: "3"
 services:
-  nextjs:
-    build: ./
-  nginx:
-    build: ./nginx
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - 80:80
+      - "80:3000"
+    env_file:
+      - .env.local
