@@ -17,23 +17,39 @@ export default function Home() {
   return (
     <main className="flex flex-col text-black items-center relative overflow-hidden">
       <Layout>
-          <Hero/>
-          <Stats/>
-          <Image src={LightRings} alt="" className="absolute -left-32 top-[65rem] -z-10 rotate-180"/>
-          <div className="mx-10 md:mx-32 text-white text-center px-5 md:px-32 gradient_two font-bold text-big-text py-14">
-              <p>Unlock your entrepreneurial potential with instant mentorship. Connect with experienced professionals and skyrocket your startup success. Discover a world of growth opportunities now.</p>
-          </div>
+        <Hero />
+        <Stats />
+        <Image
+          src={LightRings}
+          alt=""
+          className="absolute -left-32 top-[65rem] -z-10 rotate-180"
+        />
+        <div className="mx-10 md:mx-32 text-black text-center px-5 md:px-32 gradient_two font-bold text-big-text py-14">
+          <p>
+            Unlock your entrepreneurial potential with instant mentorship.
+            Connect with experienced professionals and skyrocket your startup
+            success. Discover a world of growth opportunities now.
+          </p>
+        </div>
 
-          <WeIdea/>
-          <Image src={LightRings} alt="" className="absolute -right-32 top-[170rem] -z-10"/>
-          <Join/>
-          <Mentor/>
-          <Faq/>
-          <Customer/>
-          <Image src={RightRings} alt="" className="absolute -left-32 top-[220rem] -z-10"/>
-          <Media/>
-          <Contact/>
+        <WeIdea />
+        <Image
+          src={LightRings}
+          alt=""
+          className="absolute -right-32 top-[170rem] -z-10"
+        />
+        <Join />
+        <Mentor />
+        <Faq />
+        <Customer />
+        <Image
+          src={RightRings}
+          alt=""
+          className="absolute -left-32 top-[220rem] -z-10"
+        />
+        <Media />
+        <Contact />
       </Layout>
     </main>
-  )
+  );
 }
