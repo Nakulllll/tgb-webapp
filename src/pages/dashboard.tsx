@@ -39,9 +39,9 @@ const Dashboard = () => {
         const userData = querySnapshotUser.data();
 
         // @ts-ignore
-        setName(userData["First Name"] + " " + userData["Last Name"]);
+        //setName(userData["First Name"] + " " + userData["Last Name"]);
 
-        console.log(name);
+        //console.log(name);
 
         // @ts-ignore
         setAllMentorList(mentorData.slice(0, 5));
@@ -71,7 +71,7 @@ const Dashboard = () => {
               <div className="-z-50">
                 <div className="mx-20 py-10 flex flex-col items-start">
                   <p className="text-white font-bold text-3xl md:text-5xl pb-4">
-                    Hi {name}!
+                    Welcome to Guiding Bee!
                   </p>
                   <p className="text-white font-bold text-xl md:text-3xl">
                     It's a great day to learn something new!
@@ -107,35 +107,7 @@ const Dashboard = () => {
             <div className="mx-5 md:mx-20 py-10 flex flex-col items-start text-[#14142B]">
               <p className="font-bold text-2xl">Scheduled Calls</p>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full items-start gap-x-0 md:gap-x-10 lg:gap-x-20">
-                {
-                  // @ts-ignore
-                  user.scheduledCalls?.length > 0 ? (
-                    user.scheduledCalls.map((call: any) => (
-                      <div
-                        key={call.id}
-                        className="flex w-full flex-row items-start gap-0 md:gap-10 bg-white shadow rounded-2xl px-6 lg:px-12 py-6 my-6"
-                      >
-                        <Image src={User} alt="User" />
-                        <div className="flex flex-col justify-between">
-                          <p className="text-black text-xl font-semibold">
-                            {call.name}
-                          </p>
-                          <p className="text-[#6C6C6C]">{call.role}</p>
-                        </div>
-                        <div className="flex flex-col justify-between">
-                          <p className="text-[#0A204A]">
-                            {call.date}, {call.time}
-                          </p>
-                          <p className="text-[#EB4335] font-semibold">
-                            {call.remainingTime}
-                          </p>
-                        </div>
-                      </div>
-                    ))
-                  ) : (
-                    <p className="py-5">No scheduled calls</p>
-                  )
-                }
+                <p className="py-5">No scheduled calls</p>
               </div>
             </div>
 
