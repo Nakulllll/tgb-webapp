@@ -55,10 +55,9 @@ const Signin = () => {
             localStorage.setItem("user", JSON.stringify(user));
             router.push(`/signup?uid=${user!.uid}`);
           } else {
-            localStorage.setItem("user", JSON.stringify(user));
+            localStorage.setItem("user", JSON.stringify(userDoc));
             router.push("/dashboard");
           }
-          // ...
         })
         .catch((error) => {
           console.error(error);
