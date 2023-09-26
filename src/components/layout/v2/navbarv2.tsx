@@ -109,7 +109,10 @@ const Navbar = () => {
           </div>
 
           <div className="flex flex-row justify-center items-center w-full gap-x-6">
-            <Image src={Msg} alt="" className="w-5" />
+            <a href="/chat">
+              <Image src={Msg} alt="" className="w-5" />
+            </a>
+
             <Image src={Alarm} alt="" className="w-5" />
             <input
               className="border border-[#D5DAE1] rounded-2xl font-normal px-4 py-1"
